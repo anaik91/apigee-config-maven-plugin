@@ -28,20 +28,20 @@
                 <artifactId>apigee-config-maven-plugin</artifactId>
                 <version>1.5.3</version>
                 <executions>
-                	<execution>
+                	<!-- <execution>
                         <id>create-config-specs</id>
                         <phase>install</phase>                        
                         <goals>
                             <goal>specs</goal>
                         </goals>
-                    </execution>
-                    <execution>
+                    </execution> -->
+                    <!-- <execution>
                         <id>create-config-cache</id>
                         <phase>install</phase>                        
                         <goals>
                             <goal>caches</goal>
                         </goals>
-                    </execution>
+                    </execution> -->
                     <execution>
                         <id>create-config-kvm</id>
                         <phase>install</phase>                        
@@ -49,35 +49,35 @@
                             <goal>keyvaluemaps</goal>
                         </goals>
                     </execution>
-                    <execution>
+                    <!-- <execution>
                         <id>create-config-resourcefiles</id>
                         <phase>install</phase>                        
                         <goals>
                             <goal>resourcefiles</goal>
                         </goals>
-                    </execution>
-                    <execution>
+                    </execution> -->
+                    <!-- <execution>
                         <id>create-config-keystores</id>
                         <phase>install</phase>                        
                         <goals>
                             <goal>keystores</goal>
                         </goals>
-                    </execution>
-                    <execution>
+                    </execution> -->
+                    <!-- <execution>
                         <id>create-config-aliases</id>
                         <phase>install</phase>                        
                         <goals>
                             <goal>aliases</goal>
                         </goals>
-                    </execution>
-                    <execution>
+                    </execution> -->
+                    <!-- <execution>
                         <id>create-config-references</id>
                         <phase>install</phase>                        
                         <goals>
                             <goal>references</goal>
                         </goals>
-                    </execution>
-                    <execution>
+                    </execution> -->
+                    <!-- <execution>
                         <id>create-config-targetserver</id>
                         <phase>install</phase>                        
                         <goals>
@@ -146,7 +146,7 @@
                         <goals>
                             <goal>importKeys</goal>
                         </goals>
-                    </execution>
+                    </execution> -->
                 </executions>
             </plugin>            
         </plugins>
@@ -155,60 +155,28 @@
         <profile>
             <id>test</id>
             <properties>
+                <org>testmyapi</org>  <!-- default org, replace with default org to avoid passing parameter e.g. -Dorg testmyapi -->
+                <options>validate</options>  <!-- default org, replace with default org to avoid passing parameter e.g. -Dorg testmyapi -->
                 <apigee.profile>test</apigee.profile>
+                <apigee.env>${env}</apigee.env>
                 <apigee.hosturl>${hosturl}</apigee.hosturl>
                 <apigee.apiversion>v1</apigee.apiversion>
                 <apigee.org>${org}</apigee.org>
-                <apigee.env>${env}</apigee.env>
                 <apigee.username>${username}</apigee.username>
                 <apigee.password>${password}</apigee.password>
+                <apigee.options>${options}</apigee.options>
+                <apigee.tokenurl>${tokenurl}</apigee.tokenurl> <!-- optional: oauth -->
+                <apigee.mfatoken>${mfatoken}</apigee.mfatoken> <!-- optional: mfa -->
                 <apigee.authtype>${authtype}</apigee.authtype> <!-- optional: oauth|basic(default) -->
-                <apigee.tokenurl>https://login.apigee.com/oauth/token</apigee.tokenurl> <!-- optional: oauth -->
-                <apigee.mfatoken>${mfatoken}</apigee.mfatoken> <!-- optional: mfa -->
-                <apigee.clientid>${clientId}</apigee.clientid> <!-- optional: Oauth Client Id - Default is edgecli-->
-                <apigee.clientsecret>${clientSecret}</apigee.clientsecret> <!-- optional: Oauth Client Secret Default is edgeclisecret-->
                 <apigee.bearer>${bearer}</apigee.bearer> <!-- optional: Bearer token override -->
                 <apigee.refresh>${refresh}</apigee.refresh> <!-- optional: Refresh token override -->
-            </properties>
-        </profile>
-        <profile>
-            <id>lab3dev</id>
-            <properties>
-                <apigee.profile>lab3dev</apigee.profile>
-                <apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-                <apigee.apiversion>v1</apigee.apiversion>
-                <apigee.org>${org}</apigee.org>
-                <apigee.env>${env}</apigee.env>
-                <apigee.username>${username}</apigee.username>
-                <apigee.password>${password}</apigee.password>
-                <apigee.authtype>oauth</apigee.authtype> <!-- optional: oauth|basic(default) -->
-                <apigee.tokenurl>https://login.apigee.com/oauth/token</apigee.tokenurl> <!-- optional: oauth -->
-                <apigee.mfatoken>${mfatoken}</apigee.mfatoken> <!-- optional: mfa -->
                 <apigee.clientid>${clientId}</apigee.clientid> <!-- optional: Oauth Client Id - Default is edgecli-->
                 <apigee.clientsecret>${clientSecret}</apigee.clientsecret> <!-- optional: Oauth Client Secret Default is edgeclisecret-->
-                <apigee.bearer>${bearer}</apigee.bearer> <!-- optional: Bearer token override -->
-                <apigee.refresh>${refresh}</apigee.refresh> <!-- optional: Refresh token override -->
+                <!--apigee.override.delay>10</apigee.override.delay-->
+                <!--apigee.delay>1000</apigee.delay-->
             </properties>
         </profile>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <apigee.profile>dev</apigee.profile>
-                <apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-                <apigee.apiversion>v1</apigee.apiversion>
-                <apigee.org>${org}</apigee.org>
-                <apigee.env>${env}</apigee.env>
-                <apigee.username>${username}</apigee.username>
-                <apigee.password>${password}</apigee.password>
-                <apigee.authtype>oauth</apigee.authtype> <!-- optional: oauth|basic(default) -->
-                <apigee.tokenurl>https://login.apigee.com/oauth/token</apigee.tokenurl> <!-- optional: oauth -->
-                <apigee.mfatoken>${mfatoken}</apigee.mfatoken> <!-- optional: mfa -->
-                <apigee.clientid>${clientId}</apigee.clientid> <!-- optional: Oauth Client Id - Default is edgecli-->
-                <apigee.clientsecret>${clientSecret}</apigee.clientsecret> <!-- optional: Oauth Client Secret Default is edgeclisecret-->
-                <apigee.bearer>${bearer}</apigee.bearer> <!-- optional: Bearer token override -->
-                <apigee.refresh>${refresh}</apigee.refresh> <!-- optional: Refresh token override -->
-            </properties>
-        </profile>
+
     </profiles>
     <dependencies>
         <dependency>
@@ -219,7 +187,6 @@
         </dependency>
     </dependencies>
 </project>
-
 
 
 

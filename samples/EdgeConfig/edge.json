@@ -131,6 +131,23 @@
     "dev": {
       "caches": [],
       "targetServers": []
+    },
+    "prod" : {
+      "kvms": [
+        {
+          "name": "backend_account_config",
+          "entry": [
+            {
+              "name": "COMPANY",
+              "value": "example.com"
+            },
+            {
+              "name": "PREFIX",
+              "value": "EXMPL"
+            }
+          ]
+        }
+      ]
     }
   },
   "orgConfig": {
